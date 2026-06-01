@@ -34,6 +34,8 @@ jobs:
         ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
 
     - name: Push Docker Image to ECR
+      env:
+        ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+        ECR_REPOSITORY: enterprise-devops-app # Put your actual repo name here directly
       run: |
-        docker push \
-        ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
